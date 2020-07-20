@@ -19,7 +19,7 @@ for (let i = 0; i < boxes.length; i++) {
     let el = checkEl(player1, player2); // definindo o X ou O
 
     // verificando se há X ou O
-    if (this.childNodes.lenght == 0) {
+    if (this.childNodes.length == 0) {
       let cloneEl = el.cloneNode(true);
       this.appendChild(cloneEl);
       // computando a jogada
