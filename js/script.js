@@ -28,6 +28,8 @@ for (let i = 0; i < boxes.length; i++) {
       } else {
         player2++;
       }
+      // checagem da vitória
+      checkWinCondidtion();
     }
   });
 }
@@ -42,4 +44,73 @@ function checkEl(player1, player2) {
     el = o;
   }
   return el;
+}
+
+// verifica quem ganhou
+function checkWinCondidtion() {
+  let b1 = document.getElementById("block-1");
+  let b2 = document.getElementById("block-2");
+  let b3 = document.getElementById("block-3");
+  let b4 = document.getElementById("block-4");
+  let b5 = document.getElementById("block-5");
+  let b6 = document.getElementById("block-6");
+  let b7 = document.getElementById("block-7");
+  let b8 = document.getElementById("block-8");
+  let b9 = document.getElementById("block-9");
+
+  // vitória na horizontal
+  // primeira linha
+  if (
+    b1.childNodes.length > 0 &&
+    b2.childNodes.length > 0 &&
+    b3.childNodes.length > 0
+  ) {
+    let b1Child = b1.childNodes[0].className;
+    let b2Child = b2.childNodes[0].className;
+    let b3Child = b3.childNodes[0].className;
+
+    if (b1Child == "x" && b2Child == "x" && b3Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b1Child == "O" && b3Child == "O" && b3Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+  // segunda linha
+  if (
+    b4.childNodes.length > 0 &&
+    b5.childNodes.length > 0 &&
+    b6.childNodes.length > 0
+  ) {
+    let b4Child = b4.childNodes[0].className;
+    let b5Child = b5.childNodes[0].className;
+    let b6Child = b6.childNodes[0].className;
+
+    if (b4Child == "x" && b5Child == "x" && b6Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b4Child == "O" && b5Child == "O" && b6Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+  // terceira linha
+  if (
+    b7.childNodes.length > 0 &&
+    b8.childNodes.length > 0 &&
+    b9.childNodes.length > 0
+  ) {
+    let b7Child = b7.childNodes[0].className;
+    let b8Child = b8.childNodes[0].className;
+    let b9Child = b9.childNodes[0].className;
+
+    if (b7Child == "x" && b8Child == "x" && b9Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b7Child == "O" && b8Child == "O" && b9Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
 }
