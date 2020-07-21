@@ -25,12 +25,36 @@ for (let i = 0; i < boxes.length; i++) {
       // computando a jogada
       if (player1 == player2) {
         player1++;
+
+        if (secondPlayer == "ai-player") {
+          // função executa a jogada
+          computerPlay();
+          player2++;
+        }
       } else {
         player2++;
       }
       // checagem da vitória
       checkWinCondidtion();
     }
+  });
+}
+
+// events para definir se é 2 players ou o computador
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", function () {
+    secondPlayer = this.getAttribute("id");
+
+    // esconde botões
+    for (let j = 0; j < buttons.length; j++) {
+      buttons[j].style.display = "none";
+    }
+
+    // mostra o tabuleiro
+    setTimeout(() => {
+      let container = document.querySelector("#container");
+      container.classList.remove("hide");
+    }, 1000);
   });
 }
 
@@ -229,7 +253,6 @@ function checkWinCondidtion() {
 }
 
 // declara vencedor & atualiza o placar
-
 function declareWinner(winner) {
   let scoreboardX = document.querySelector("#scoreboard-1");
   let scoreboardO = document.querySelector("#scoreboard-2");
@@ -264,5 +287,31 @@ function declareWinner(winner) {
 
   for (let i = 0; i < boxesToRemove.length; i++) {
     boxesToRemove[i].parentNode.removeChild(boxesToRemove[i]);
+  }
+}
+
+// executando a lógica da jogada do CPU
+function computerPlay() {
+  let cloneO = o.cloneNode(true); // clonar a O
+  counter = 0; // quantos para preencher
+  filled = 0; // quantos já preenchidos
+
+  for (let i = 0; i < boxes.length; i++) {
+    let randomNumber = Math.floor(Math.random() * 5); // numero aleatório de 0 a 5
+    // apenas preenche se o child estiver vazio
+    if (boxes[i].childNodes[0] == undefined) {
+      if (randomNumber <= 1) {
+        boxes[i].appendChild(cloneO);
+        counter++;
+        break;
+      }
+      // checagem de quantas boxes estão preenchidas
+    } else {
+      filled++;
+    }
+  }
+
+  if (counter == 0 && filled < 9) {
+    computerPlay();
   }
 }
