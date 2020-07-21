@@ -71,10 +71,10 @@ function checkWinCondidtion() {
 
     if (b1Child == "x" && b2Child == "x" && b3Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b1Child == "O" && b3Child == "O" && b3Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
   // segunda linha
@@ -89,10 +89,10 @@ function checkWinCondidtion() {
 
     if (b4Child == "x" && b5Child == "x" && b6Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b4Child == "O" && b5Child == "O" && b6Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
   // terceira linha
@@ -107,10 +107,10 @@ function checkWinCondidtion() {
 
     if (b7Child == "x" && b8Child == "x" && b9Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b7Child == "O" && b8Child == "O" && b9Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
 
@@ -128,10 +128,10 @@ function checkWinCondidtion() {
 
     if (b1Child == "x" && b4Child == "x" && b7Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b1Child == "O" && b4Child == "O" && b7Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
 
@@ -147,10 +147,10 @@ function checkWinCondidtion() {
 
     if (b2Child == "x" && b5Child == "x" && b8Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b2Child == "O" && b5Child == "O" && b8Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
 
@@ -166,10 +166,10 @@ function checkWinCondidtion() {
 
     if (b3Child == "x" && b6Child == "x" && b9Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b3Child == "O" && b6Child == "O" && b9Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
 
@@ -187,10 +187,10 @@ function checkWinCondidtion() {
 
     if (b1Child == "x" && b5Child == "x" && b9Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b1Child == "O" && b5Child == "O" && b9Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
 
@@ -206,10 +206,10 @@ function checkWinCondidtion() {
 
     if (b3Child == "x" && b5Child == "x" && b7Child == "x") {
       // X ganhou
-      console.log("O jogador X ganhou.");
+      declareWinner("x");
     } else if (b3Child == "O" && b5Child == "O" && b7Child == "O") {
       // O ganhou
-      console.log("O jogador O ganhou.");
+      declareWinner("O");
     }
   }
 
@@ -224,6 +224,45 @@ function checkWinCondidtion() {
 
   if (counter == 9) {
     // se todos os boxes tiverem marcados
-    console.log("Deu velha.");
+    declareWinner("Velha");
+  }
+}
+
+// declara vencedor & atualiza o placar
+
+function declareWinner(winner) {
+  let scoreboardX = document.querySelector("#scoreboard-1");
+  let scoreboardO = document.querySelector("#scoreboard-2");
+  let msg = "";
+
+  // atualizar o placar
+  if (winner == "x") {
+    scoreboardX.textContent = parseInt(scoreboardX.textContent) + 1;
+    msg = "O jogador 1 venceu!";
+  } else if (winner == "O") {
+    scoreboardO.textContent = parseInt(scoreboardO.textContent) + 1;
+    msg = "O jogador 2 venceu!";
+  } else {
+    msg = "Deu velha!";
+  }
+
+  // exibe mensagem na tela
+  messageText.innerHTML = msg;
+  messageContainer.classList.remove("hide");
+
+  // esconde a mensagem após 3 segundos
+  setTimeout(() => {
+    messageContainer.classList.add("hide");
+  }, 3000);
+
+  // zera as jogadas
+  player1 = 0;
+  player2 = 0;
+
+  // limpa o jogo
+  let boxesToRemove = document.querySelectorAll(".box div");
+
+  for (let i = 0; i < boxesToRemove.length; i++) {
+    boxesToRemove[i].parentNode.removeChild(boxesToRemove[i]);
   }
 }

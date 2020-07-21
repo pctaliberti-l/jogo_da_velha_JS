@@ -82,10 +82,9 @@ h1 {
 }
 
 /* hide class */
-/* 
 .hide {
   display: none !important;
-} */
+}
 
 /* scoreboard */
 
@@ -130,5 +129,4 @@ h1 {
   background-color: #000;
   color: #ffffff;
   padding: 20px;
-  display: none; /* esconder */
 }
