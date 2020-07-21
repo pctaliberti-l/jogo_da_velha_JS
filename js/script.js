@@ -113,4 +113,117 @@ function checkWinCondidtion() {
       console.log("O jogador O ganhou.");
     }
   }
+
+  // vitória na vertical
+
+  // primeira coluna
+  if (
+    b1.childNodes.length > 0 &&
+    b4.childNodes.length > 0 &&
+    b7.childNodes.length > 0
+  ) {
+    let b1Child = b1.childNodes[0].className;
+    let b4Child = b4.childNodes[0].className;
+    let b7Child = b7.childNodes[0].className;
+
+    if (b1Child == "x" && b4Child == "x" && b7Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b1Child == "O" && b4Child == "O" && b7Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+
+  // segunda coluna
+  if (
+    b2.childNodes.length > 0 &&
+    b5.childNodes.length > 0 &&
+    b8.childNodes.length > 0
+  ) {
+    let b2Child = b2.childNodes[0].className;
+    let b5Child = b5.childNodes[0].className;
+    let b8Child = b8.childNodes[0].className;
+
+    if (b2Child == "x" && b5Child == "x" && b8Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b2Child == "O" && b5Child == "O" && b8Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+
+  // terceira coluna
+  if (
+    b3.childNodes.length > 0 &&
+    b6.childNodes.length > 0 &&
+    b9.childNodes.length > 0
+  ) {
+    let b3Child = b3.childNodes[0].className;
+    let b6Child = b6.childNodes[0].className;
+    let b9Child = b9.childNodes[0].className;
+
+    if (b3Child == "x" && b6Child == "x" && b9Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b3Child == "O" && b6Child == "O" && b9Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+
+  // vitória diagonal
+
+  // primeira diagonal
+  if (
+    b1.childNodes.length > 0 &&
+    b5.childNodes.length > 0 &&
+    b9.childNodes.length > 0
+  ) {
+    let b1Child = b1.childNodes[0].className;
+    let b5Child = b5.childNodes[0].className;
+    let b9Child = b9.childNodes[0].className;
+
+    if (b1Child == "x" && b5Child == "x" && b9Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b1Child == "O" && b5Child == "O" && b9Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+
+  // segunda diagonal
+  if (
+    b3.childNodes.length > 0 &&
+    b5.childNodes.length > 0 &&
+    b7.childNodes.length > 0
+  ) {
+    let b3Child = b3.childNodes[0].className;
+    let b5Child = b5.childNodes[0].className;
+    let b7Child = b7.childNodes[0].className;
+
+    if (b3Child == "x" && b5Child == "x" && b7Child == "x") {
+      // X ganhou
+      console.log("O jogador X ganhou.");
+    } else if (b3Child == "O" && b5Child == "O" && b7Child == "O") {
+      // O ganhou
+      console.log("O jogador O ganhou.");
+    }
+  }
+
+  // declara "velha"
+  let counter = 0;
+
+  for (let i = 0; i < boxes.length; i++) {
+    if (boxes[i].childNodes[0] != undefined) {
+      counter++;
+    }
+  }
+
+  if (counter == 9) {
+    // se todos os boxes tiverem marcados
+    console.log("Deu velha.");
+  }
 }
